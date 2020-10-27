@@ -4,6 +4,11 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
+    //.addToTail() method, takes a value and adds it to the end of the list
+    //old tail now points to new tail node
+    //list.tail = value
+    // change list.tail to reflect new value
+
   };
 
   list.removeHead = function() {
