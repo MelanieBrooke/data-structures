@@ -3,6 +3,8 @@
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = [];
+  this.edges = [];
+  // this.edges = [[node1, node2], [node1, node 3], [node4, node5]]
 };
 
 // Add a node to the graph, passing in the node's value.
@@ -26,10 +28,22 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  ///iterate through this.nodes to find specific fromNode
+  for (var i = 0; i < this.nodes.length; i ++) {
+    if (this.nodes[i].values === fromNode) {
+      if (this.nodes[i].edges.indexOf(toNode) >= 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  //check fromNode.edges if connected toNode, return true or false
 };
 
 // Connects two nodes in a graph by adding an edge between them.
