@@ -31,7 +31,10 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    //recursion to search nodes
+    //recursion to search nodes, take in a node
+    //if current node is not target, and next node is empty, return null
+    //if node value is target, return true
+    //else run recursion on rest of nodes
     //should contain a value that was added
     //should not contain a value that wasn't added
   };
