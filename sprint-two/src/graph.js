@@ -27,6 +27,17 @@ Graph.prototype.contains = function (node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function (node) {
   //iterate through this.nodes
+  for (var i = 0; i < this.nodes.length; i ++) {
+    if (this.nodes[i] === node) {
+      this.nodes.splice(i, 1);
+    }
+  }
+  for (var i = 0; i < this.edges.length; i++) {
+    if (this.edges[i].indexOf(node) >= 0) {
+      return this.edges.splice(i, 1);
+    }
+  }
+
   //find target node
   //splice this.nodes to remove target node
   //iterate through this.edges
@@ -67,6 +78,9 @@ Graph.prototype.removeEdge = function (fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function (cb) {
+  for (var i = 0; i < this.nodes.length; i ++) {
+    cb(this.nodes[i]);
+  }
 
 };
 
@@ -74,6 +88,8 @@ var newGraph = new Graph;
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ .addNode, .addEdge - constant O(1)
+ .contains, .removeEdge, .hasEdge, .forEachNode - linear O(n)
  */
 
 
