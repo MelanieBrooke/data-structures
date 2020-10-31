@@ -41,5 +41,13 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should remove a child from the first level of the tree', function() {
+    tree.addChild(3);
+    tree.addChild(5);
+    tree.removeChild(3);
+    expect(tree.contains(5)).to.equal(true);
+    expect(tree.contains(3)).to.equal(false);
+  });
+
 });
 //this is a comment

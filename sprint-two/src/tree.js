@@ -4,7 +4,7 @@ var Tree = function (value) {
   _.extend(newTree, treeMethods);
 
   // your code here
-  newTree.children = [];  // fix me
+  newTree.children = [];
 
   return newTree;
 };
@@ -24,7 +24,7 @@ treeMethods.contains = function (target) {
   if (this.value === target) {
     return true;
   } else if (this.children.length > 0) {
-    for (var i = 0; i < this.children.length; i ++) {
+    for (var i = 0; i < this.children.length; i++) {
       var result = this.children[i].contains(target);
       if (result) {
         return true;
@@ -32,12 +32,16 @@ treeMethods.contains = function (target) {
 
     }
   }
-
-  //return true
-  //if children, loop through
-  //result =   this.children[i].contains(target)
-  //
   return false;
+};
+
+
+treeMethods.removeChild = function (target) {
+  for (var i = 0; i < this.children.length; i++) {
+    if (target = this.children[i]) {
+      this.children.splice(i, 1);
+    }
+  }
 };
 
 

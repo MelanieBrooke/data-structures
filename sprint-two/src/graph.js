@@ -4,6 +4,7 @@
 var Graph = function () {
   this.nodes = [];
   this.edges = [];
+  this.counter = 0;
   // this.edges = [[node1, node2], [node1, node 3], [node4, node5]]
 };
 
@@ -11,6 +12,7 @@ var Graph = function () {
 Graph.prototype.addNode = function (node) {
   newNode = node;
   this.nodes.push(newNode);
+  this.counter += 1;
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
@@ -27,6 +29,7 @@ Graph.prototype.contains = function (node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function (node) {
   //iterate through this.nodes
+  this.counter -= 1;
   for (var i = 0; i < this.nodes.length; i ++) {
     if (this.nodes[i] === node) {
       this.nodes.splice(i, 1);
