@@ -1,6 +1,7 @@
 var Set = function() {
   var set = Object.create(setPrototype);
   set._storage = {};
+  set._counter = 0;
   return set;
 };
 
@@ -10,6 +11,7 @@ setPrototype.add = function(item) {
   if (this._storage[item] === undefined) {
     this._storage[item] = item;
   }
+  this._counter += 1;
   //we need to check if it's already in there
 };
 
@@ -23,6 +25,7 @@ setPrototype.remove = function(item) {
   if (this._storage[item] !== undefined) {
     delete this._storage[item];
   }
+  this._counter -= 1;
 };
 
 /*
