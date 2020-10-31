@@ -8,7 +8,7 @@ var BinarySearchTree = function (value) {
 
 var bstMethods = {};
 
-bstMethods.insert = function(value) {
+bstMethods.insert = function (value) {
   if (!this.value) {
     this.value = value;
   }
@@ -58,7 +58,7 @@ bstMethods.depthFirstLog = function (cb) {
 
 bstMethods.size = function () {
   var counter = 0;
-  this.depthFirstLog( function () {
+  this.depthFirstLog(function () {
     counter += 1;
   });
   return counter;
@@ -93,7 +93,7 @@ bstMethods.size = function () {
 //     return useCase(bst.right, newNumber);
 //   } else {
 //     return useCase(bst.left, newNumber);
-//   }
+//
 
 
 //   //log smallestDifference as node - newNumber (and change closestNumber at the same time)
