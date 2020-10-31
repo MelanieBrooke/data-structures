@@ -24,4 +24,12 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should return accurate size of the set', function() {
+    set.add('Melanie DeWitt');
+    set.add('Miri Wipf');
+    set.add('Bob Loblaw');
+    set.remove('Bob Loblaw');
+    expect(set._counter).to.equal(2);
+  });
+
 });
