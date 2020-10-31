@@ -1,37 +1,30 @@
-var Queue = function () {
-  var someInstance = {};
-  someInstance.head = 0;
-  someInstance.tail = 0;
-  someInstance.storage = {};
-  extend(someInstance, queueMethods);
+var Queue = function() {
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  var queueObject = {};
+  queueObject.storage = {};
+  _.extend(queueObject, queueMethods);
+  return queueObject;
+ };
 
-  return someInstance;
-};
+ var queueMethods = {};
 
-var extend = function (someInstance, methods) {
-  for (var key in methods) {
-    someInstance[key] = methods[key];
+ queueMethods.size = function () {
+  return Object.keys(this.storage).length;
+ }
+
+ queueMethods.enqueue = function (value) {
+  if (Object.keys(this.storage).length === 0) {
+    this.storage[1] = value;
+  } else {
+    var lastKey = Object.keys(this.storage).length - 1;
+    var newKey = Number(Object.keys(this.storage)[lastKey]) + 1;
+    this.storage[newKey] = value;
   }
-};
+ }
 
-var queueMethods = {};
-
-
-queueMethods.enqueue = function (data) {
-  this.storage[this.tail] = data;
-  this.tail += 1;
-};
-
-queueMethods.dequeue = function () {
-  if (this.tail === this.head) {
-    return null;
-  }
-  var data = this.storage[this.head];
-  delete this.storage[this.head];
-  this.head += 1;
-  return data;
-};
-
-queueMethods.size = function () {
-  return this.tail - this.head;
-};
+ queueMethods.dequeue = function () {
+  let dequeued = this.storage[Object.keys(this.storage)[0]];
+  delete this.storage[Object.keys(this.storage)[0]];
+  return dequeued;
+ }

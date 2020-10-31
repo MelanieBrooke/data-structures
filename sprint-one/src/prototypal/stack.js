@@ -1,30 +1,29 @@
 var Stack = function() {
-  var someInstance = Object.create(stackMethods);
-  someInstance.counter = 0;
-  someInstance.storage = {};
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  var stackObject = Object.create(stackMethods);
+  stackObject.storage = {};
 
-  return someInstance;
+  return stackObject;
 };
 
 var stackMethods = {};
 
-stackMethods.push = function(value) {
-  //add new value to storage, at counter value
-  this.storage[this.counter] = value;
-  //add one to counter
-  this.counter += 1;
+stackMethods.size = function () {
+  return Object.keys(this.storage).length;
+}
 
-};
+stackMethods.pop = function () {
+  let popped = this.storage[Object.keys(this.storage).length - 1];
+  delete this.storage[Object.keys(this.storage).length - 1];
+  return popped;
+ }
 
-stackMethods.pop = function() {
-  //check if the queue is not empty
-  if (this.counter) {
-    //popping removes one from counter
-    this.counter -= 1;
-  }
-  //return value of the popped
-  return this.storage[this.counter];
-};
+ stackMethods.push = function(value) {
+  this.storage[Object.keys(this.storage).length] = value;
+ };
+
+
 
 stackMethods.size = function() {
   return this.counter;

@@ -1,28 +1,28 @@
 class Queue {
   constructor() {
-    this.head = 0;
-    this.tail = 0;
     this.storage = {};
   }
 
+  size() {
+    return Object.keys(this.storage).length;
+   }
+
   enqueue(value) {
-    this.storage[this.tail] = value;
-    this.tail += 1;
-  }
+    if (Object.keys(this.storage).length === 0) {
+      this.storage[1] = value;
+    } else {
+      var lastIndex = Object.keys(this.storage).length - 1;
+      var newKey = Number(Object.keys(this.storage)[lastIndex]) + 1;
+      this.storage[newKey] = value;
+    }
+   }
 
   dequeue() {
-    if (this.tail === this.head) {
-      return null;
-    }
-    var value = this.storage[this.head];
-    delete this.storage[this.head];
-    this.head += 1;
-    return value;
-  }
+    let dequeuedItem = this.storage[Object.keys(this.storage)[0]];
+    delete this.storage[Object.keys(this.storage)[0]];
+    return dequeuedItem;
+   }
 
-  size() {
-    return this.tail - this.head;
-  }
 }
 
 var someInstance = new Queue();

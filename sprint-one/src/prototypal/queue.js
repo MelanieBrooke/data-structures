@@ -1,33 +1,30 @@
 var Queue = function() {
-  var someInstance = Object.create(queueMethods);
-  someInstance.tail = 0;
-  someInstance.head = 0;
-  someInstance.storage = {};
-  return someInstance;
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  var queueObject = Object.create(queueMethods);
+  queueObject.storage = {};
+  return queueObject;
 };
 
 
 var queueMethods = {};
 
-
-queueMethods.enqueue = function (value) {
-  //add item to end of queue
-  this.storage[this.tail] = value;
-  this.tail += 1;
-};
-
-queueMethods.dequeue = function () {
-  //remove an item from queue
-  if (this.tail === this.head) {
-    return null;
-  }
-  var data = this.storage[this.head];
-  delete this.storage[this.head];
-  this.head += 1;
-  return data;
-
-};
-
 queueMethods.size = function () {
-  return this.tail - this.head;
-};
+  return Object.keys(this.storage).length;
+ }
+
+ queueMethods.enqueue = function (value) {
+  if (Object.keys(this.storage).length === 0) {
+    this.storage[1] = value;
+  } else {
+    var lastIndex = Object.keys(this.storage).length - 1;
+    var newKey = Number(Object.keys(this.storage)[lastIndex]) + 1;
+    this.storage[newKey] = value;
+  }
+ }
+
+ queueMethods.dequeue = function () {
+  let dequeued = this.storage[Object.keys(this.storage)[0]];
+  delete this.storage[Object.keys(this.storage)[0]];
+  return dequeued;
+ }

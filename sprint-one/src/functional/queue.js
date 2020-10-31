@@ -7,30 +7,31 @@ var Queue = function () {
   //var to track head and tail
 
   // Use an object with numeric keys to store values
-  var storage = {};
+  var storage = {
+  };
+
   // Implement the methods below
 
-  someInstance.enqueue = function (value) {
-    storage[tail] = value;
-    tail += 1;
-
-    //the operation of adding an element to the rear of the queue
-  };
-
-  someInstance.dequeue = function () {
-    if (tail === head) {
-      return null;
+  someInstance.enqueue = function(value) {
+    if (Object.keys(storage).length === 0) {
+      storage[1] = value;
+    } else if (Object.keys(storage > 0)) {
+      var last = Object.keys(storage).length - 1;
+      var newKey = Number(Object.keys(storage)[last]) + 1;
+      storage[newKey] = value;
     }
-    var item = storage[head];
-    delete storage[head];
-    head += 1;
-    return item;
-    //removing an element from the front
+
   };
 
-  someInstance.size = function () {
-    return tail - head;
+  someInstance.dequeue = function() {
+    let tempVar = storage[Object.keys(storage)[0]];
+    delete storage[Object.keys(storage)[0]];
+    return tempVar;
+  };
+
+  someInstance.size = function() {
+    return Object.keys(storage).length;
   };
 
   return someInstance;
-};
+ };

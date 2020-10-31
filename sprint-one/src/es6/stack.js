@@ -1,25 +1,23 @@
 class Stack {
 
   constructor() {
-    this.counter = 0;
     this.storage = {};
-  }
-
-  push(value) {
-    this.storage[this.counter] = value;
-    this.counter += 1;
-  }
-
-  pop() {
-    if (this.counter) {
-      this.counter -= 1;
-    }
-    return this.storage[this.counter];
-  }
-
-  size() {
-    return this.counter;
   }
 }
 
-var someInstance = new Stack();
+  size() {
+    return Object.keys(this.storage).length;
+  }
+
+  push(value) {
+    this.storage[Object.keys(this.storage).length] = value;
+   }
+
+  pop() {
+    let poppedItem = this.storage[Object.keys(this.storage).length - 1];
+    delete this.storage[Object.keys(this.storage).length - 1];
+    return poppedItem;
+  }
+
+}
+

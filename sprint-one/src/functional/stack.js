@@ -3,28 +3,24 @@ var Stack = function() {
   var size = 0;
 
   // Use an object with numeric keys to store values
-  var storage = {};
+  var storage = {
+  };
 
   // Implement the methods below
   someInstance.push = function(value) {
-    storage[size] = value;
-    //stack push will add an element to the collection (storage?)
-    size += 1;
+    storage[Object.keys(storage).length] = value;
   };
 
   someInstance.pop = function() {
-    //pop will remove the most recently added element that was not yet removed
-    //if storage has values, pop will remove one
-    if (size) {
-      size -= 1;
-    }
-    //return the size of the storage after popping
-    return storage[size];
+    let tempVar = storage[Object.keys(storage).length - 1];
+    delete storage[Object.keys(storage).length - 1];
+    return tempVar;
   };
 
   someInstance.size = function() {
-    return size;
+    return (Object.keys(storage).length);
   };
 
   return someInstance;
-};
+ };
+
