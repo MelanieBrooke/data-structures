@@ -56,6 +56,15 @@ bstMethods.depthFirstLog = function (cb) {
 
 };
 
+bstMethods.size = function () {
+  var counter = 0;
+  this.depthFirstLog( function () {
+    counter += 1;
+  });
+  return counter;
+  // return the size of the binary search tree
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  //binary search trees are O(log n), logrithmic, depending on the size of the input
@@ -63,37 +72,37 @@ bstMethods.depthFirstLog = function (cb) {
 
  // working on use case problem
 
-var useCase = function(bst, newNumber) {
-  var smallestDifference = Math.abs(bst.value - newNumber);
-  var closestNumber = bst.value;
-// I'm just putting my thoughts into words as best I can, typing my brain thoughts is easier this way for me
-// I could be totally off, this is what I was trying to express about how our depthfirstlog handles the recursive checking for us
-// bst.depthFirstLog(function(){
-//  if ((Math.abs(this.value - newNumber) < smallestDifference) {
-//    smallestDifference = Math.abs(this.value - newNumber);
-//    closestNumber = this.value;
-//  }
-// return closestNumber
-})
+// var useCase = function(bst, newNumber) {
+//   var smallestDifference = Math.abs(bst.value - newNumber);
+//   var closestNumber = bst.value;
+// // I'm just putting my thoughts into words as best I can, typing my brain thoughts is easier this way for me
+// // I could be totally off, this is what I was trying to express about how our depthfirstlog handles the recursive checking for us
+// // bst.depthFirstLog(function(){
+// //  if ((Math.abs(this.value - newNumber) < smallestDifference) {
+// //    smallestDifference = Math.abs(this.value - newNumber);
+// //    closestNumber = this.value;
+// //  }
+// // return closestNumber
+// })
 
-if ((Math.abs(bst.value - newNumber) < smallestDifference) {
-  //    smallestDifference = Math.abs(this.value - newNumber);
-  //    closestNumber = this.value;
-  //  }
-  if (bst.value < newNumber) {
-    return useCase(bst.right, newNumber);
-  } else {
-    return useCase(bst.left, newNumber);
-  }
+// if ((Math.abs(bst.value - newNumber) < smallestDifference) {
+//   //    smallestDifference = Math.abs(this.value - newNumber);
+//   //    closestNumber = this.value;
+//   //  }
+//   if (bst.value < newNumber) {
+//     return useCase(bst.right, newNumber);
+//   } else {
+//     return useCase(bst.left, newNumber);
+//   }
 
 
-  //log smallestDifference as node - newNumber (and change closestNumber at the same time)
-  //running recursive function to check if every this.value is higher or lower than newNumber
-  //if higher, go to right // if lower, go to left . run recursion
-  //keep a history of what the closestNode has been
-  //if no branch, return closestNumber
+//   //log smallestDifference as node - newNumber (and change closestNumber at the same time)
+//   //running recursive function to check if every this.value is higher or lower than newNumber
+//   //if higher, go to right // if lower, go to left . run recursion
+//   //keep a history of what the closestNode has been
+//   //if no branch, return closestNumber
 
-}
+// }
 
 
 
